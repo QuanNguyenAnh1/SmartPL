@@ -11,3 +11,4 @@ cmake --build .\build\
 ```bash
 build\Debug\car-parking.exe img Points\origin Points\destination
 ```
+# SmartPL
