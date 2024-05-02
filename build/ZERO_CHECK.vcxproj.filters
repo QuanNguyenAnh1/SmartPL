@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Admin\Downloads\Car-Parking-main\Car-Parking-main\build\CMakeFiles\aacdcd25cd0c28fcf82a3c429ae78996\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{919EDE1C-0606-30F9-944E-8216F4229A7C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
