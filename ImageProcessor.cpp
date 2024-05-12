@@ -5,30 +5,45 @@ ImageProcessor::ImageProcessor() {
 ImageProcessor::~ImageProcessor() {
 }
 
-cv::Mat ImageProcessor::preprocessImage( cv::Mat& image) {
+cv::Mat ImageProcessor::preprocessImage(cv::Mat& image) {
+    // Margin size for cropping the image
     int xMargin = 2;  
     int yMargin = 2;  
+
+    // Get the height and width of the input image
     int height = image.rows;
     int width = image.cols;
+
+    // Define a region of interest (ROI) rectangle
     cv::Rect roiRect(xMargin, yMargin, width - 2 * xMargin, height - 2 * yMargin);
+    
+    // Extract the region of interest from the input image
     cv::Mat roi = image(roiRect);
 
+    // Convert the ROI to grayscale
     cv::Mat grayImage;
     cv::cvtColor(roi, grayImage, cv::COLOR_BGR2GRAY);
 
+    // Apply Gaussian blur to the grayscale image
     cv::Mat blurredImage;
     cv::GaussianBlur(grayImage, blurredImage, cv::Size(5, 5), 0);
 
+    // Detect edges using the Canny edge detection algorithm
     cv::Mat edges;
     cv::Canny(blurredImage, edges, 50, 150);
 
+    // Define a morphological kernel
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(2, 2));
+    
+    // Perform morphological closing on the edges
     cv::Mat closing;
     cv::morphologyEx(edges, closing, cv::MORPH_CLOSE, kernel);
 
+    // Dilate the closing to further enhance edges
     cv::Mat dilated;
     cv::dilate(closing, dilated, kernel, cv::Point(-1, -1), 1);
 
+    // Return the dilated image
     return dilated;
 }
 
