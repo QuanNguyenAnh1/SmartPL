@@ -5,7 +5,7 @@ ImageProcessor::ImageProcessor() {
 ImageProcessor::~ImageProcessor() {
 }
 
-cv::Mat ImageProcessor::preprocessImage(cv::Mat& image) {
+cv::Mat ImageProcessor::preprocessImage(cv::Mat& image) {  //preprocess and edge dilation
     // Margin size for cropping the image
     int xMargin = 2;  
     int yMargin = 2;  
